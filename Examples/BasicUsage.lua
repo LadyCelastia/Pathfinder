@@ -7,7 +7,7 @@ local newPath = pathfinder.ToCharacter(character, enemy) -- be VERY careful, thi
 if not newPath.HasPath then -- pathfind can fail if there is no walkable path to the target
   repeat
     task.wait(1)
-    newPath:Compute()
+    newPath:ComputeAsync() -- this is also asynchronous
   until newPath.HasPath
 end
 selfHum:MoveTo(newPath:GetNextWaypoint().Position)
